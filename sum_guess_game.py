@@ -43,6 +43,7 @@ class Game():
     """
 
     def __init__(self, n):
+        """Make a new game with choice bound n"""
         self.n = n
         self.players = []
         self.turn = 0
@@ -58,6 +59,8 @@ class Game():
         self.turn = 0
         self.limits = [2, 2*self.n]
         self.situ['guesses'] = []
+        self.winner = None
+        self.S = 0
         for i, p in enumerate(self.players):
             c = p.get_number()
             cIsOk = type(c)==int and c>=1 and c<=self.n
@@ -105,8 +108,9 @@ class Game():
     def play_game(self, log=False):
         if log:
             print ("Game begins")
+        self.init_game(log=log)
+        if log:
             print ("Limits are [%d, %d]" %(self.limits[0], self.limits[1]))
-        g.init_game(log=log)
         while not self.winner:
             self.play_turn(log=log)
             if self.winner: break
@@ -114,7 +118,9 @@ class Game():
         if log:
             print ("Player %d wins." %(self.turn,))
 
-
+    def get_index_of_winner(self):
+        if self.winner in self.players: return self.players.index(self.winner)
+        else: return -1
 
 if __name__ == "__main__":
     from bisect_player import BisectPlayer
