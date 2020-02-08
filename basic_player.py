@@ -3,7 +3,7 @@ import random
 
 
 
-class Player():
+class Player(object):
     """An AI-player for sum guessing game.
     This basic class makes a random guess in the given limits.
     Inherit from this and implement your own AI-player.

@@ -78,6 +78,7 @@ class Game():
         p = self.players[self.turn]
         g = p.get_guess(self.limits, self.situ)
         if log:
+            print ("Guesses so far is %s" %(self.situ['guesses']))
             print ("Player %d guesses %s." %(self.turn, str(g)))
         gIsOk = type(g)==int and g>=self.limits[0] and g<=self.limits[1]
         if not gIsOk:
@@ -121,6 +122,17 @@ class Game():
     def get_index_of_winner(self):
         if self.winner in self.players: return self.players.index(self.winner)
         else: return -1
+
+
+    def simulate(self, simu_n):
+        """Play the game multiple times and return the winning fractions
+        @param simu_n: how many times to play the game.
+        @return A tuple of players winning fractions"""
+        wins = [0, 0]
+        for i in range(simu_n):
+            self.play_game(False)
+            wins[self.get_index_of_winner()] += 1
+        return tuple(float(w)/simu_n for w in wins)
 
 if __name__ == "__main__":
     from bisect_player import BisectPlayer
