@@ -16,10 +16,10 @@ if __name__ == "__main__":
     #game_ns = list(range(1, 11)) + [15, 25, 50, 75, 100, 250, 500, 1000] 
     game_ns = [1,2,3,4,5, 10, 25, 50, 100, 500, 1000]
     player_classes = [
-        #Player,
-        #BisectPlayer,
+        Player,
+        BisectPlayer,
         OwnKnowPlayer,
-        EdgeGuessPlayer,
+        #EdgeGuessPlayer,
                       ]
     player_names = [str(p_cl).split(".")[-1][:-2] for p_cl in player_classes]
     name_len_max = max(len(w) for w in player_names)
