@@ -3,7 +3,7 @@ from sum_guess_game import Game
 from basic_player import Player
 from bisect_player import BisectPlayer
 from own_know_player import OwnKnowPlayer
-from edge_guess_player import EdgeGuessPlayer
+#from edge_guess_player import EdgeGuessPlayer
 
 
 
