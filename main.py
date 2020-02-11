@@ -3,7 +3,11 @@ from sum_guess_game import Game
 from basic_player import Player
 from bisect_player import BisectPlayer
 from own_know_player import OwnKnowPlayer
-#from edge_guess_player import EdgeGuessPlayer
+from edge_guess_player import EdgeGuessPlayer
+
+
+
+
 
 
 
@@ -11,7 +15,12 @@ if __name__ == "__main__":
     simu_n = 1000
     #game_ns = list(range(1, 11)) + [15, 25, 50, 75, 100, 250, 500, 1000] 
     game_ns = [1,2,3,4,5, 10, 25, 50, 100, 500, 1000]
-    player_classes = [Player, BisectPlayer, OwnKnowPlayer]
+    player_classes = [
+        #Player,
+        #BisectPlayer,
+        OwnKnowPlayer,
+        EdgeGuessPlayer,
+                      ]
     player_names = [str(p_cl).split(".")[-1][:-2] for p_cl in player_classes]
     name_len_max = max(len(w) for w in player_names)
     results = {n: [0.0 for _ in player_classes] for n in game_ns}
